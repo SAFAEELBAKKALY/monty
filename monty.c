@@ -9,10 +9,10 @@
 
 int main(int argc, char *argv[])
 {
-	char l[254];
+	char l[256], opcode[256];
 	FILE *file;
+	int argument, items_read, i = 0;
 	stack_t *stack;
-	void (*instruction)(stack_t **stack, unsigned int line_number);
 	unsigned int line_number;
 
 	if (argc != 2)
@@ -27,14 +27,35 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: can't open file%s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	line_number = 1;
+	line_number = 0;
 	while (fgets(l, sizeof(l), file))
 	{
-		instruction = opcodes_instruction(l, line_number);
-		if (instruction != NULL)
-			instruction(&stack, line_number);
 		line_number++;
+		items_read = sscanf(l, "%s %d", opcode, &argument);
+		if (items_read == 1)
+			argument = 0;
+		else if (items_read != 2)
+		{
+			fprintf(stderr, "L%u: invalid instruction format\n", line_number);
+			fclose(file);
+			return (EXIT_FAILURE);
+		}
+		while (instruction[i].opcode != NULL)
+		{
+			if (strcmp(instruction[i].opcode, opcode) == 0)
+			{
+				execute(&stack, &instruction[i], line_number);
+				break;
+			}
+			i++;
+		}
+		if (instruction[i].opcode == NULL)
+		{
+			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
+			fclose(file);
+			return (EXIT_FAILURE);
+		}
 	}
-	_free(&stack);
+	fclose(file);
 	exit(EXIT_SUCCESS);
 }
