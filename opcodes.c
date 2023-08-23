@@ -7,28 +7,25 @@
  */
 void opcode_push(stack_t **stack, unsigned int line_number)
 {
-	int value = 0;
 	stack_t *n_node;
 
-	if (!argument)
-	{
-		fprintf(stderr, "L%d: usage: push integer\n", line_number);
-		exit(EXIT_FAILURE);
-	}
-	value = atoi(argument);
 	n_node = malloc(sizeof(stack_t));
 	if (n_node == NULL)
 	{
-		fprintf(stderr, "malloc failed\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	n_node-> = value;
+	if (stack == NULL)
+	{
+		free(n_node);
+		fprintf(stderr, "L%d: stack is null\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	n_node->n = line_number;
 	n_node->prev = NULL;
 	n_node->next = *stack;
-	if(*stack)
-	{
+	if (*stack != NULL)
 		(*stack)->prev = n_node;
-	}
 	*stack = n_node;
 }
 
@@ -40,7 +37,8 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 void opcode_pall(stack_t **stack, unsigned int line_number)
 {
 	stack_t *curr = *stack;
-	
+	(void)line_number;
+
 	while (curr)
 	{
 		printf("%d\n", curr->n);
@@ -48,6 +46,11 @@ void opcode_pall(stack_t **stack, unsigned int line_number)
 	}
 }
 
+/**
+ * opcode_pint - pint
+ * @stack: input
+ * @line_number: input
+ */
 void opcode_pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
@@ -56,4 +59,26 @@ void opcode_pint(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	printf("%d\n", (*stack)->n);
+}
+
+/**
+ * opcode_swap - swap
+ * @stack: input
+ * @line_number: input
+ */
+void opcode_swap(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
+}
+
+/**
+ * opcode_pop - pop
+ * @stack: input
+ * @line_number: input
+ */
+void opcode_pop(stack_t **stack, unsigned int line_number)
+{
+	(void)stack;
+	(void)line_number;
 }
