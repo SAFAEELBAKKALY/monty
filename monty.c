@@ -9,6 +9,16 @@
 
 int main(int argc, char *argv[])
 {
+	instruction_t instructions[] = {
+		{"push", opcode_push},
+		{"pall", opcode_pall},
+		{"pint", opcode_pint},
+		{"swap", opcode_swap},
+		{"pop", opcode_pop},
+		{"add", opcode_add},
+		{"nop", opcode_nop},
+		{NULL, NULL}
+	};
 	char l[256], opcode[256];
 	FILE *file;
 	int argument, items_read, i = 0;
@@ -40,16 +50,16 @@ int main(int argc, char *argv[])
 			fclose(file);
 			return (EXIT_FAILURE);
 		}
-		while (instruction[i].opcode != NULL)
+		while (instructions[i].opcode != NULL)
 		{
-			if (strcmp(instruction[i].opcode, opcode) == 0)
+			if (strcmp(instructions[i].opcode, opcode) == 0)
 			{
-				execute(&stack, &instruction[i], line_number);
+				execute(&stack, &instructions[i], line_number);
 				break;
 			}
 			i++;
 		}
-		if (instruction[i].opcode == NULL)
+		if (instructions[i].opcode == NULL)
 		{
 			fprintf(stderr, "L%u: unknown instruction %s\n", line_number, opcode);
 			fclose(file);

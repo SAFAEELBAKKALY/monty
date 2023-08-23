@@ -47,7 +47,7 @@ void opcode_nop(stack_t **stack, unsigned int line_number);
 void execute(stack_t **stack, instruction_t *instruction,
 		unsigned int line_number);
 
-instruction_t instruction[] = {
+/*instruction_t instructions[] = {
 	{"push", opcode_push},
 	{"pall", opcode_pall},
 	{"pint", opcode_pint},
@@ -56,6 +56,6 @@ instruction_t instruction[] = {
 	{"add", opcode_add},
 	{"nop", opcode_nop},
 	{NULL, NULL}
-};
-
+};*/
+extern instruction_t instructions[];
 #endif
