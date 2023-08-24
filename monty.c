@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
 		{"pop", opcode_pop},
 		{"add", opcode_add},
 		{"nop", opcode_nop},
+		{"sub", opcode_sub},
 		{NULL, NULL}
 	};
 	char l[256], opcode[256];
