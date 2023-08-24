@@ -26,4 +26,6 @@ void execute(stack_t **stack, instruction_t *instruction,
 		opcode_nop(stack, line_number);
 	else if (strcmp(instruction->opcode, "sub") == 0)
 		opcode_sub(stack, line_number);
+	else if (strcmp(instruction->opcode, "div") == 0)
+		opcode_div(stack, line_number);
 }
