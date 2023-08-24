@@ -15,12 +15,6 @@ void opcode_push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
-	if (stack == NULL)
-	{
-		free(n_node);
-		fprintf(stderr, "L%d: stack is null\n", line_number);
-		exit(EXIT_FAILURE);
-	}
 	n_node->n = line_number;
 	n_node->prev = NULL;
 	n_node->next = *stack;

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <limits.h>
+#include <ctype.h>
 
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
@@ -47,15 +48,6 @@ void opcode_nop(stack_t **stack, unsigned int line_number);
 void execute(stack_t **stack, instruction_t *instruction,
 		unsigned int line_number);
 
-/*instruction_t instructions[] = {
-	{"push", opcode_push},
-	{"pall", opcode_pall},
-	{"pint", opcode_pint},
-	{"swap", opcode_swap},
-	{"pop", opcode_pop},
-	{"add", opcode_add},
-	{"nop", opcode_nop},
-	{NULL, NULL}
-};*/
 extern instruction_t instructions[];
+
 #endif
