@@ -32,4 +32,8 @@ void execute(stack_t **stack, instruction_t *instruction,
 		opcode_mul(stack, line_number);
 	else if (strcmp(instruction->opcode, "mod") == 0)
 		opcode_mod(stack, line_number);
+	else if (strcmp(instruction->opcode, "#") == 0)
+	{
+		/* Comment line, don't do anything */
+	}
 }
