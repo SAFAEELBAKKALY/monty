@@ -30,4 +30,6 @@ void execute(stack_t **stack, instruction_t *instruction,
 		opcode_div(stack, line_number);
 	else if (strcmp(instruction->opcode, "mul") == 0)
 		opcode_mul(stack, line_number);
+	else if (strcmp(instruction->opcode, "mod") == 0)
+		opcode_mod(stack, line_number);
 }
