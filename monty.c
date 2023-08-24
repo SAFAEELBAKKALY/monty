@@ -59,7 +59,6 @@ int main(int argc, char *argv[])
 			if (strcmp(instructions[i].opcode, opcode) == 0)
 			{
 				instructions[i].f(&stack, line_number);
-				/*execute(&stack, &instructions[i], line_number);*/
 				break;
 			}
 			i++;
