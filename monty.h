@@ -46,6 +46,7 @@ void opcode_add(stack_t **stack, unsigned int line_number);
 void opcode_nop(stack_t **stack, unsigned int line_number);
 void opcode_sub(stack_t **stack, unsigned int line_number);
 void opcode_div(stack_t **stack, unsigned int line_number);
+void opcode_mul(stack_t **stack, unsigned int line_number);
 
 void execute(stack_t **stack, instruction_t *instruction,
 		unsigned int line_number);
