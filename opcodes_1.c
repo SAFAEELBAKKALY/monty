@@ -39,6 +39,6 @@ void opcode_sub(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	(*stack)->next-> -= (*stack)->n;
+	(*stack)->next->n -= (*stack)->n;
 	opcode_pop(stack, line_number);
 }
