@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 		{"mul", opcode_mul},
 		{"mod", opcode_mod},
 		{"pchar", opcode_pchar},
+		{"pstr", opcode_pstr},
 		{NULL, NULL}
 	};
 	char l[256], opcode[256];
