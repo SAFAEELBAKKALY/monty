@@ -48,6 +48,7 @@ void opcode_sub(stack_t **stack, unsigned int line_number);
 void opcode_div(stack_t **stack, unsigned int line_number);
 void opcode_mul(stack_t **stack, unsigned int line_number);
 void opcode_mod(stack_t **stack, unsigned int line_number);
+void opcode_pchar(stack_t **stack, unsigned int line_number);
 extern instruction_t instructions[];
 
 #endif
